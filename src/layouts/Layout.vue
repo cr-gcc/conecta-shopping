@@ -1,7 +1,8 @@
 <template>
   <div class="min-h-screen flex flex-col">
     <Header/>
-    <main class="flex-1 p-4">
+    <Hero/>
+    <main class="flex-1">
       <div class="space-y-4 px-4 py-6">
         <slot />
       </div>
@@ -11,5 +12,6 @@
 </template>
 <script setup>
   import Header from '@/components/Header.vue';
+  import Hero from "@/components/Hero.vue";
   import Footer from '@/components/Footer.vue';
 </script>
