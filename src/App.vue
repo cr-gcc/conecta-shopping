@@ -4,5 +4,5 @@
 	</layout>
 </template>
 <script setup>
-	import layout from '@/layouts/Layout.vue';
+	import layout from '@/layouts/MainLayout.vue';
 </script>
