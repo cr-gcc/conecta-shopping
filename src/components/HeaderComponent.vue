@@ -12,13 +12,16 @@
           <nav aria-label="Global" class="hidden md:block h-full">
             <ul class="flex h-full items-center text-xs md:text-sm lg:text-base">
               <li v-if="isAuthenticated" class="h-full">
-                <a class="nav-items-style" href="#"> Inicio </a>
+                <router-link to="/" class="nav-items-style"> Inicio </router-link>
               </li>
               <li v-if="isAuthenticated" class="h-full">
-                <a class="nav-items-style" href="#"> Premios </a>
+                <router-link to="/rewards" class="nav-items-style"> Premios </router-link>
               </li>
               <li v-if="isAuthenticated" class="h-full">
-                <a class="nav-items-style" href="#"> Alianzas </a>
+                <router-link to="/partners" class="nav-items-style"> Alianzas </router-link>
+              </li>
+              <li v-if="isAuthenticated" class="h-full">
+                <router-link to="/products" class="nav-items-style"> Productos </router-link>
               </li>
               <li v-if="isAuthenticated" class="h-full">
                 <button @click="handleLogout" class="nav-items-style button">

@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-5xl font-semibold text-cyan-900 py-4 px-6">Home Page</h1>
+  <h1 class="text-5xl font-semibold text-cyan-900 py-4 px-6">Partners</h1>
 </template>
 <script setup>
   import { usePageLayout } from '@/composables/usePageLayout';

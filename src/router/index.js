@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from "vue-router";
 import { useAuthStore } from "@/stores/auth";
 import Login from "@/views/LoginView.vue";
 import Home from "@/views/HomeView.vue";
+import Partners from "@/views/Partners.vue";
+import Rewards from "@/views/Rewards.vue";
+import Products from "@/views/Products.vue";
 
 const routes = [
   {
@@ -15,6 +18,27 @@ const routes = [
   {
     path: "/",
     component: Home,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/partners",
+    component: Partners,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/rewards",
+    component: Rewards,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/products",
+    component: Products,
     meta: {
       requiresAuth: true,
     },
