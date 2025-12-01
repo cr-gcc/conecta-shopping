@@ -23,21 +23,21 @@ const routes = [
     },
   },
   {
-    path: "/partners",
+    path: "/alianzas",
     component: Partners,
     meta: {
       requiresAuth: true,
     },
   },
   {
-    path: "/rewards",
+    path: "/premios",
     component: Rewards,
     meta: {
       requiresAuth: true,
     },
   },
   {
-    path: "/products",
+    path: "/productos",
     component: Products,
     meta: {
       requiresAuth: true,

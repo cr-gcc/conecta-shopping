@@ -7,7 +7,7 @@
   usePageLayout({
     heroVisible: true,
     heroType: 'image',
-    heroValue: '/conecta/img/banners/banner-home.jpg',
+    heroValue: '/conecta/img/banners/banner-alianza.jpg',
     heroTitle: '', 
     headerStyle: 'white',
     footerVisible: true

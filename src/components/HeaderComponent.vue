@@ -15,13 +15,13 @@
                 <router-link to="/" class="nav-items-style"> Inicio </router-link>
               </li>
               <li v-if="isAuthenticated" class="h-full">
-                <router-link to="/rewards" class="nav-items-style"> Premios </router-link>
+                <router-link to="/premios" class="nav-items-style"> Premios </router-link>
               </li>
               <li v-if="isAuthenticated" class="h-full">
-                <router-link to="/partners" class="nav-items-style"> Alianzas </router-link>
+                <router-link to="/alianzas" class="nav-items-style"> Alianzas </router-link>
               </li>
               <li v-if="isAuthenticated" class="h-full">
-                <router-link to="/products" class="nav-items-style"> Productos </router-link>
+                <router-link to="/productos" class="nav-items-style"> Productos </router-link>
               </li>
               <li v-if="isAuthenticated" class="h-full">
                 <button @click="handleLogout" class="nav-items-style button">
