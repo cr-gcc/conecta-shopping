@@ -1,26 +1,23 @@
 import { defineStore } from "pinia";
 import AuthService from "@/services/AuthService";
+
 export const useAuthStore = defineStore("auth", {
   state: () => ({
     user: null,
-    isAuthenticated: false, // Or derive from user !== null
+    isAuthenticated: false,
   }),
-  persist: true, // Using pinia-plugin-persistedstate
+  persist: true,
   actions: {
     async login(credentials) {
       try {
         const response = await AuthService.login(credentials);
-        
-        // Check if backend returns user data directly
         if (response.data.user) {
           this.user = response.data.user;
           this.isAuthenticated = true;
         } else {
-          // Fallback to fetching user if not in response
           await this.fetchUser();
         }
       } catch (error) {
-        // Reset auth state on any error
         this.user = null;
         this.isAuthenticated = false;
         throw error;
@@ -34,7 +31,7 @@ export const useAuthStore = defineStore("auth", {
       } catch (error) {
         this.user = null;
         this.isAuthenticated = false;
-        throw error; // Propagate error to caller
+        throw error;
       }
     },
     async logout() {
@@ -43,7 +40,6 @@ export const useAuthStore = defineStore("auth", {
       } finally {
         this.user = null;
         this.isAuthenticated = false;
-        // Optional: Clear persistence if needed manually
       }
     },
   },
