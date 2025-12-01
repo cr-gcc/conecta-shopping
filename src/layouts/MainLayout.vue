@@ -5,7 +5,7 @@
       <Hero/>  
     </HHLayout>
     <main class="flex-1">
-      <div class="space-y-4 px-4 py-6">
+      <div class="space-y-4">
         <slot />
       </div>
     </main>

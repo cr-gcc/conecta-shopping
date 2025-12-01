@@ -5,3 +5,20 @@
 body {
   font-family: 'Manrope', sans-serif;
 }
+
+/* Navigation Items Style */
+.nav-items-style {
+  @apply flex h-full items-center px-2 md:px-6 text-rose-600 transition hover:bg-rose-400 hover:text-white;
+}
+
+.nav-items-style.mobile {
+  @apply block px-6 py-4 text-rose-600 transition hover:bg-rose-400 hover:text-white border-b border-gray-100;
+}
+
+.nav-items-style.button {
+  @apply cursor-pointer;
+}
+
+.nav-items-style.mobile.button {
+  @apply w-full text-left;
+}
