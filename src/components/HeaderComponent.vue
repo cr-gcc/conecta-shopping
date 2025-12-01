@@ -25,6 +25,9 @@
                   Cerrar Sesión
                 </button>
               </li>
+              <li v-if="isAuthenticated" class="h-full">
+                <a class="nav-items-style" href="#"> {{ user?.name }} </a>
+              </li>
               <li v-if="!isAuthenticated" class="h-full">
                 <a class="nav-items-style" href="#"> Registrarse </a>
               </li>
@@ -66,6 +69,9 @@
           </li>
           
           <!-- Mostrar solo si está autenticado -->
+           <li v-if="isAuthenticated">
+            <a class="nav-items-style mobile" href="#"> {{ user?.name }} </a>
+          </li>
           <li v-if="isAuthenticated">
             <button @click="handleLogout" class="nav-items-style mobile button">
               Cerrar Sesión
@@ -107,9 +113,10 @@ const headerClasses = computed(() => {
 const handleLogout = async () => {
   try {
     await authStore.logout();
-    router.push('/login');
   } catch (error) {
     console.error('Error al cerrar sesión:', error);
+  } finally {
+    router.push('/login');
   }
 };
 </script>
