@@ -1,13 +1,6 @@
 <template>
   <div class="py-4 px-36 mt-10">
-    <div class="introduction mb-12">
-      <div class="flex justify-center mb-6">
-        <h2 class="text-4xl font-semibold text-rose-500">Categoría de premios</h2>
-      </div>
-      <div class="text-center">
-        <p class="text-base font-semibold leading-none">Te tenemos nuevas misiones cargadas de puntos. Gana, acumula y cambia tus puntos por bonos para pagar servicios y mucho más.</p>
-      </div>
-    </div>
+    <Introduction :title="title" :message="msg"/>
     <div class="rewards">
       <!-- Buscar y ordenar -->
       <div class="flex justify-between items-center gap-4 mb-18">
@@ -61,7 +54,7 @@
       <!-- Lista de premios -->
       <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <div v-for="(x, index) in 10" :key="index">
-          <RC/>
+          <Reward/>
         </div>
       </div>
     </div>
@@ -70,12 +63,15 @@
 <script setup>
   import { ref, onMounted, onUnmounted } from 'vue';
   import { usePageLayout } from '@/composables/usePageLayout';
-  import RC from '@/components/RewardComponent.vue';
+  import Introduction from '@/components/IntroductionComponent.vue';
+  import Reward from '@/components/RewardComponent.vue';
 
   const searchReward = ref('');
   const openSelect = ref(false);
   const selectedSort = ref('');
   const containerRef = ref(null);
+  const title = 'Premios';
+  const msg = 'Te tenemos nuevas misiones cargadas de puntos. Gana, acumula y cambia tus puntos por bonos para pagar servicios y mucho más.';
   const options = [
     { value: '1', label: 'De menor a mayor costo' },
     { value: '2', label: 'De mayor a menor costo' },

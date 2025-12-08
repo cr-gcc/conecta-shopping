@@ -2,9 +2,9 @@ import { createRouter, createWebHistory } from "vue-router";
 import { useAuthStore } from "@/stores/auth";
 import Login from "@/views/LoginView.vue";
 import Home from "@/views/HomeView.vue";
-import Partners from "@/views/Partners.vue";
-import Rewards from "@/views/Rewards.vue";
-import Products from "@/views/Products.vue";
+import Partners from "@/views/PartnersView.vue";
+import Rewards from "@/views/RewardsView.vue";
+import Products from "@/views/ProductsView.vue";
 
 const routes = [
   {

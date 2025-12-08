@@ -4,7 +4,7 @@
     <HHLayout>
       <Hero/>  
     </HHLayout>
-    <main class="flex-1">
+    <main class="flex-1 bg-gray-200">
       <div class="space-y-4">
         <slot />
       </div>
