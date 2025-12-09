@@ -18,7 +18,7 @@ api.interceptors.request.use(config => {
     ?.split('=')[1]
   
   if (token) {
-    config.headers['X-XSRF-TOKEN'] = decodeURIComponent(token)
+    config.headers['X-XSRF-TOKEN'] = decodeURIComponent(token);
   }
   
   return config

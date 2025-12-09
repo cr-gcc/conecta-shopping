@@ -53,8 +53,8 @@
       </div>
       <!-- Lista de premios -->
       <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <div v-for="(x, index) in 10" :key="index">
-          <Reward/>
+        <div v-for="(reward, index) in rewards" :key="index">
+          <Reward :reward="reward"/>
         </div>
       </div>
     </div>
@@ -65,6 +65,7 @@
   import { usePageLayout } from '@/composables/usePageLayout';
   import Introduction from '@/components/IntroductionComponent.vue';
   import Reward from '@/components/RewardComponent.vue';
+	import api from "@/lib/axios";
 
   const searchReward = ref('');
   const openSelect = ref(false);
@@ -72,12 +73,22 @@
   const containerRef = ref(null);
   const title = 'Premios';
   const msg = 'Te tenemos nuevas misiones cargadas de puntos. Gana, acumula y cambia tus puntos por bonos para pagar servicios y mucho más.';
+	const rewards = ref([]);
   const options = [
     { value: '1', label: 'De menor a mayor costo' },
     { value: '2', label: 'De mayor a menor costo' },
     { value: '3', label: 'A a la Z' },
     { value: '4', label: 'Z a la A' }
   ];
+
+	usePageLayout({
+    heroVisible: true,
+    heroType: 'image',
+    heroValue: '/conecta/img/banners/banner-premios.jpg',
+    heroTitle: '', 
+    headerStyle: 'white',
+    footerVisible: true
+  });
 
   const selectOption = (value) => {
     selectedSort.value = value;
@@ -90,20 +101,22 @@
     }
   };
 
-  onMounted(() => {
-    document.addEventListener('click', handleClickOutside);
-  });
+  const getRewards = async () => {
+		const url = import.meta.env.VITE_API_REWARDS;
+		try {
+			const response = await api.get(url);
+			rewards.value = response.data.data;
+		} catch (error) {
+			console.error('Error al obtener las recompensas:', error);
+		}
+	};
 
-  onUnmounted(() => {
+	onMounted( async () => {
+		document.addEventListener('click', handleClickOutside);
+		await getRewards();
+	});
+
+	onUnmounted(() => {
     document.removeEventListener('click', handleClickOutside);
-  });
-
-  usePageLayout({
-    heroVisible: true,
-    heroType: 'image',
-    heroValue: '/conecta/img/banners/banner-premios.jpg',
-    heroTitle: '', 
-    headerStyle: 'white',
-    footerVisible: true
   });
 </script>

@@ -82,15 +82,11 @@
               </tbody>
             </table>
           </div>
-
         </div>
-
         <input type="radio" name="my_tabs_3" class="tab" aria-label="Promociones" checked="checked" />
         <div class="tab-content bg-base-100 border-base-300 p-6">Tab content 2</div>
-
         <input type="radio" name="my_tabs_3" class="tab" aria-label="Productos" />
         <div class="tab-content bg-base-100 border-base-300 p-6">Tab content 3</div>
-
         <input type="radio" name="my_tabs_3" class="tab" aria-label="Miembros" />
         <div class="tab-content bg-base-100 border-base-300 p-6">Tab content 4</div>
       </div>
@@ -98,8 +94,10 @@
   </div>
 </template>
 <script setup>
+	import { ref } from 'vue';
   import { usePageLayout } from '@/composables/usePageLayout';
   import Introduction from '@/components/IntroductionComponent.vue';
+	import api from "@/lib/axios";
 
   const title = 'Bienvenido a Conecta';
   const msg = 'A continuación encontrarás el ranking de los miembros con más estrellas y los mejores premios, promociones y productos que tenemos para ti';
@@ -112,4 +110,5 @@
     headerStyle: 'white',
     footerVisible: true
   });
+
 </script>
