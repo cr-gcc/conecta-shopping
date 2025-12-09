@@ -26,10 +26,10 @@
               <li v-if="isAuthenticated" ref="userMenuContainer" class="relative h-full flex items-center">
                 <button 
                   @click="isUserMenuOpen = !isUserMenuOpen" 
-                  class="nav-items-style flex items-center gap-2"
+                  class="nav-items-style flex items-center cursor-pointer"
                 >
                   {{ user?.name }}
-                  <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200" :class="{ 'rotate-180': isUserMenuOpen }"></i>
+                  <i class="ml-2 fa-solid fa-chevron-down text-xs transition-transform duration-200" :class="{ 'rotate-180': isUserMenuOpen }"></i>
                 </button>
                 <!-- User Dropdown -->
                 <div 
@@ -43,7 +43,7 @@
 
                   <a href="#" class="group block px-4 py-2 text-sm text-rose-400 hover:bg-rose-400 hover:text-white hover:font-semibold flex items-center gap-2">
                     <i class="mt-1 fa fa-history text-rose-400 group-hover:text-white transition-colors"></i>
-                    Historial
+                    Pedidos
                   </a>
                   
                   <a href="#" class="group block px-4 py-2 text-sm text-rose-400 hover:bg-rose-400 hover:text-white hover:font-semibold flex items-center gap-2">
@@ -90,18 +90,10 @@
           <li v-if="isAuthenticated">
             <a class="nav-items-style mobile" href="#"> Alianzas </a>
           </li>
-          <!-- Mostrar solo si NO está autenticado -->
-          <li v-if="!isAuthenticated">
-            <a class="nav-items-style mobile" href="#"> Registrate </a>
-          </li>
-          <li v-if="!isAuthenticated">
-            <a class="nav-items-style mobile" href="#"> Iniciar Sesión </a>
-          </li>
-          <!-- Mostrar solo si está autenticado -->
-           <li v-if="isAuthenticated">
+          <li v-if="isAuthenticated">
             <button 
               @click="isMobileUserOptionsOpen = !isMobileUserOptionsOpen"
-              class="nav-items-style mobile"
+              class="nav-items-style mobile w-full text-left cursor-pointer"
             >
               <span>{{ user?.name }}</span>
               <i class="ml-1 fa-solid fa-chevron-down text-xs transition-transform duration-200" :class="{ 'rotate-180': isMobileUserOptionsOpen }"></i>
@@ -115,15 +107,26 @@
               </li>
               <li>
                 <a class="nav-items-style mobile block px-6 py-2 text-sm text-gray-600 hover:text-rose-500 flex items-center gap-2" href="#"> 
+                  <i class="mt-1 mr-1 fa fa-history text-rose-400"></i> Pedidos 
+                </a>
+              </li>
+              <li>
+                <a class="nav-items-style mobile block px-6 py-2 text-sm text-gray-600 hover:text-rose-500 flex items-center gap-2" href="#"> 
                    <i class="mt-1 mr-1 fa fa-shopping-cart text-rose-400"></i> Mi carrito 
                 </a>
               </li>
               <li>
                 <button @click="handleLogout" class="nav-items-style mobile w-full text-left px-6 py-2 text-sm text-gray-600 hover:text-rose-500 flex items-center gap-2">
-                  <i class="mt-1 mr-1 fa fa-sign-out text-rose-400"></i> Cerrar Sesión
+                  <i class="mt-1 mr-1 fa fa-sign-out text-rose-400"></i> Cerrar sesión
                 </button>
               </li>
             </ul>
+          </li>
+          <li v-if="!isAuthenticated">
+            <a class="nav-items-style mobile" href="#"> Registrate </a>
+          </li>
+          <li v-if="!isAuthenticated">
+            <a class="nav-items-style mobile" href="#"> Iniciar Sesión </a>
           </li>
         </ul>
       </nav>
