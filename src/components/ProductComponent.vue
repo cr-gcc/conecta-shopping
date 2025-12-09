@@ -21,7 +21,7 @@
             automáticamente sin romper el flip.
           </p>
           <button class="btn btn-sm btn-outline border-white text-white hover:bg-white hover:text-rose-500">
-            Continuar
+            Adquirir
           </button>
         </div>
       </div>
