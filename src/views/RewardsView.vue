@@ -63,10 +63,12 @@
 <script setup>
   import { ref, onMounted, onUnmounted } from 'vue';
   import { usePageLayout } from '@/composables/usePageLayout';
+	import { useLoadingScreenStore } from '@/stores/loadingScreen';
   import Introduction from '@/components/IntroductionComponent.vue';
   import Reward from '@/components/RewardComponent.vue';
 	import api from "@/lib/axios";
 
+	const loadingScreen = useLoadingScreenStore();
   const searchReward = ref('');
   const openSelect = ref(false);
   const selectedSort = ref('');
@@ -102,12 +104,15 @@
   };
 
   const getRewards = async () => {
+		loadingScreen.show();
 		const url = import.meta.env.VITE_API_REWARDS;
 		try {
 			const response = await api.get(url);
 			rewards.value = response.data.data;
 		} catch (error) {
 			console.error('Error al obtener las recompensas:', error);
+		} finally {
+			loadingScreen.hide();
 		}
 	};
 

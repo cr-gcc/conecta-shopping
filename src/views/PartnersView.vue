@@ -11,10 +11,12 @@
 <script setup>
 	import { ref, onMounted } from 'vue';
   import { usePageLayout } from '@/composables/usePageLayout';
+	import { useLoadingScreenStore } from '@/stores/loadingScreen';
   import Introduction from '@/components/IntroductionComponent.vue';
   import Partner from '@/components/PartnerComponent.vue';
 	import api from "@/lib/axios";
 
+	const loadingScreen = useLoadingScreenStore();
   const title = 'Nuestros socios';
   const msg = 'Con las Alianzas Conecta encontrarás múltiples opciones para cada momento de tu vida. Podrás: hacer, comprar, ir y saber. ¡Descúbrelas y disfruta!';
 	const partners = ref([]);
@@ -29,12 +31,15 @@
   });
 
 	const getPartners = async () => {
+		loadingScreen.show();
 		const url = import.meta.env.VITE_API_PARTNERS;
 		try {
 			const response =  await api.get(url);
 			partners.value = response.data.products;
 		} catch (error) {
 			console.error('Error al obtener los productos:', error);
+		} finally {
+			loadingScreen.hide();
 		}
 	};
 
